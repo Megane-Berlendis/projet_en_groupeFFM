@@ -9,6 +9,6 @@ session_start();
 
 
     $content = '';
-
+    $content2 = '';
 
 ?>
