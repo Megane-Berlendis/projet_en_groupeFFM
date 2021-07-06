@@ -9,22 +9,23 @@ require_once('init.php');
 
 if(!empty($_POST['supprimer'])){
     $a = $_POST['supprimer'];
-    $recup = $pdo->query("SELECT * FROM employes WHERE id_employes LIKE '%$a%' ");
-    $r = $recup->fetchAll(PDO::FETCH_ASSOC);
-    foreach($r as $f){
-        if($a == $f['id_employes']){
-            $supp = $pdo->query("DELETE FROM employes WHERE id_employes = '$f[id_employes]' ");
-            echo "<script>if (confirm(\"Êtes vous sûre de vouloir supprimer l'employé·e " . $f['nom'] . " " . $f['prenom'] . "?\"))
-            { return " . $supp . ";}else{return FALSE}</script>";
+    $recup = $pdo->query("SELECT * FROM employes WHERE id_employes = $a ");
+    $r = $recup->fetch(PDO::FETCH_ASSOC);
+        if($a == $r['id_employes']){
+            $pdo->query("DELETE FROM employes WHERE id_employes = '$r[id_employes]' ");
+            // echo "<script>if (confirm(\"Êtes vous sûre de vouloir supprimer l'employé·e " . $r['nom'] . " " . $r['prenom'] . " de manière définitive?\"))
+            // { console.log('BANANE') ;} else { console.log('POMME') ;}</script>";
+            header('location: afficher_employes.php');
         }
-    }
+        else{
+            echo "<div class=\"alert alert-danger\" role=\"alert\">
+            L'employée numéro ". $a ." n'existent pas dans notre base de données.
+          </div>";
+        }
 }
-// if(isset($_GET['action']) && $_GET['action'] == 'suppression'){
-    
-//     header('Location: gestion_vehicule.php');
-// }
+
 ?>
-<form action="post">
+<form action="" method='post'>
 ID employé·e a supprimer: <input type="number" min="0" name="supprimer">
 <input type="SUBMIT" value="Supprimer">
 </form>
