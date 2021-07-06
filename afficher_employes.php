@@ -1,3 +1,4 @@
+<?php require_once('header.php');?>
 <?php
 require_once('config.php');
 require_once('init.php');
@@ -35,37 +36,7 @@ $content .= "</tbody></table>";
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-            thead th, tfoot th {
-            font-family: 'Rock Salt', cursive;
-            }
 
-            th {
-            letter-spacing: 2px;
-            }
-
-            td {
-            letter-spacing: 1px;
-            }
-
-            tbody td {
-            text-align: center;
-            border: solid black 1px;
-            }
-
-            thead th {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
-            border: 3px solid black;
-            }
-    </style>
-</head>
 <body>
    <div> <?= $content ?></div>
     <br>
@@ -76,4 +47,5 @@ $content .= "</tbody></table>";
      <br>
      <div> <?= $content2 ?></div>
 </body>
-</html>
+
+<?php require_once('footer.php');?>
